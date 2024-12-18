@@ -19,11 +19,10 @@ export const Dashboard = () => {
       <div className="mt-2 w-[120vh] h-[500px] border rounded-md ml-4 bg-slate-300 flex justify-center align-middle">
         slides
       </div>
-      <div className="mt-2 w-[60vh] h-[500px] border rounded-md ml-4 bg-slate-300 flex justify-center align-middle">
-        chat
+      <div className="mt-2 w-[65vh] h-auto border rounded-md ml-4  flex justify-center align-middle">
+        <Chat />
       </div>
       </div>
-      <Chat />
     </div>
   );
 };

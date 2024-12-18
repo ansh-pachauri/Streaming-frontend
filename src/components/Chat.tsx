@@ -14,7 +14,7 @@ export const Chat = () => {
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8081");
+    const socket = new WebSocket("ws://localhost:3000");
 
     socket.onopen = () => {
       console.log("connected");
@@ -25,10 +25,10 @@ export const Chat = () => {
 
     wsRef.current = socket;
 
-    //connect to the server
+    //connect to the server 
     async function getMessages() {
       try {
-        const response = await axios.post("http://localhost:3000/chat");
+        const response = await axios.post("http://localhost:3000/api/v1/chat");
         const data = response.data;
         setMessages((m) => [
           ...m,
@@ -67,20 +67,20 @@ export const Chat = () => {
   }, []);
 
   return (
-    <div className="flex bg-black flex-col h-screen w-full p-4">
+    <div className="flex bg-black flex-col h-auto w-full p-4 rounded-md">
       <div className="h-96 overflow-y-auto">
         {messages.map((msg) => (
           <div
             key={msg.id}
             className={`p-4 flex ${
               msg.isSent ? "justify-end" : "justify-start"
-            } }`}
+            }`}
           >
             <span
               className={`p-2 rounded-lg max-w-[70%] ${
                 msg.isSent
                   ? "bg-purple-500 text-white ml-auto"
-                  : "bg-gray-200 text-black mr-auto"
+                  : "bg-white-500 text-black mr-auto"
               }`}
             >
               {msg.content}
@@ -88,7 +88,7 @@ export const Chat = () => {
           </div>
         ))}
       </div>
-      <div className="bg-slate-800 p-2 flex justify-between rounded-md gap-2 items-center">
+      <div className="bg-slate-800 p-1 mt-8 flex justify-between rounded-md gap-2 items-center">
         <input
           type="text"
           ref={inputRef}

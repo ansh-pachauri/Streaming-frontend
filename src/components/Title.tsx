@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import Logo from '../icons/Logo';
+import { Session } from './Session';
+
 
 const Title = () => {
   return (
     <>
+    <div>
     <div className='flex justify-between items-center'>
-     <div className='flex  gap-3 p-6'>
+     <div className='flex  gap-3 p-4'>
       <Logo />
         <h1 className='text-3xl font-bold  mt-5 text-gray-800'>Study Adda</h1>
 
@@ -14,6 +17,11 @@ const Title = () => {
         <Link to="/signup">Sign Up</Link>
         </button>
       </div>
+      <div>
+        <Session />
+      </div>
+    </div>
+    
 
 
     </>
